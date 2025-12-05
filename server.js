@@ -10,6 +10,23 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    name: 'Dizi App API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      series: '/api/series',
+      episodes: '/api/episodes',
+      trailers: '/api/trailers',
+      comments: '/api/comments'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ 
