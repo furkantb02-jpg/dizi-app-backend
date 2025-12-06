@@ -70,6 +70,9 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/stats', require('./routes/stats'));
 app.use('/api/achievements', require('./routes/achievements'));
 app.use('/api/search', require('./routes/search'));
+app.use('/api/watchlist', require('./routes/watchlist'));
+app.use('/api/notes', require('./routes/notes'));
+app.use('/api/seasons', require('./routes/seasons'));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)

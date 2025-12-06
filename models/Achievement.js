@@ -8,7 +8,11 @@ const achievementSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['first_watch', 'binge_watcher', 'commentator', 'social_butterfly', 'critic', 'early_adopter'],
+    enum: [
+      'first_watch', 'binge_watcher', 'commentator', 'social_butterfly', 
+      'critic', 'early_adopter', 'genre_expert', 'super_critic', 
+      'binge_master', 'streak_keeper', 'season_finisher', 'note_taker'
+    ],
     required: true
   },
   title: {
