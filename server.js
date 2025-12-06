@@ -67,6 +67,9 @@ app.use('/api/favorites', require('./routes/favorites'));
 app.use('/api/watch-history', require('./routes/watchHistory'));
 app.use('/api/ratings', require('./routes/ratings'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/stats', require('./routes/stats'));
+app.use('/api/achievements', require('./routes/achievements'));
+app.use('/api/search', require('./routes/search'));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
