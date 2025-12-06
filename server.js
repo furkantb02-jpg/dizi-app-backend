@@ -22,7 +22,11 @@ app.get('/', (req, res) => {
       series: '/api/series',
       episodes: '/api/episodes',
       trailers: '/api/trailers',
-      comments: '/api/comments'
+      comments: '/api/comments',
+      favorites: '/api/favorites',
+      watchHistory: '/api/watch-history',
+      ratings: '/api/ratings',
+      users: '/api/users'
     }
   });
 });
@@ -37,12 +41,32 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Debug endpoint
+app.get('/api/debug', (req, res) => {
+  res.json({
+    env: {
+      NODE_ENV: process.env.NODE_ENV || 'not set',
+      JWT_SECRET: process.env.JWT_SECRET ? 'set' : 'NOT SET',
+      MONGODB_URI: process.env.MONGODB_URI ? 'set' : 'NOT SET',
+      PORT: process.env.PORT || 5000
+    },
+    mongodb: {
+      status: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+      host: mongoose.connection.host || 'not connected'
+    }
+  });
+});
+
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/series', require('./routes/series'));
 app.use('/api/episodes', require('./routes/episodes'));
 app.use('/api/trailers', require('./routes/trailers'));
 app.use('/api/comments', require('./routes/comments'));
+app.use('/api/favorites', require('./routes/favorites'));
+app.use('/api/watch-history', require('./routes/watchHistory'));
+app.use('/api/ratings', require('./routes/ratings'));
+app.use('/api/users', require('./routes/users'));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
